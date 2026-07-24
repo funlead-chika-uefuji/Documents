@@ -1,0 +1,468 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>帳票出力_画面関連一覧（どの画面から帳票を出力するかの関連）</title>
+<style>
+  :root {
+    --bg:#f4f5f7; --panel:#ffffff; --border:#d0d4da; --ink:#1f2733;
+    --muted:#5b6675; --accent:#2563a8; --accent-bg:#eaf1f8;
+    --flag-bg:#f1f2f4; --flag-ink:#7a8290;
+    --badge-abolish-bg:#fdecea; --badge-abolish-ink:#b3261e;
+    --badge-dup-bg:#fff4e5; --badge-dup-ink:#9a6400;
+  }
+  * { box-sizing:border-box; }
+  body {
+    margin:0; padding:32px 20px; background:var(--bg); color:var(--ink);
+    font-family:"Meiryo","Yu Gothic","Hiragino Kaku Gothic ProN",-apple-system,sans-serif;
+    line-height:1.6; -webkit-font-smoothing:antialiased;
+  }
+  .doc { max-width:1240px; margin:0 auto; }
+  header.meta {
+    background:var(--panel); border:1px solid var(--border); border-radius:10px;
+    padding:20px 24px; margin-bottom:28px;
+    box-shadow:0 1px 3px rgba(20,30,50,.06);
+  }
+  header.meta h1 {
+    margin:0 0 14px; font-size:20px; font-weight:700; letter-spacing:.02em;
+    padding-bottom:12px; border-bottom:2px solid var(--accent);
+  }
+  dl.info { display:grid; grid-template-columns:max-content 1fr; gap:6px 16px; margin:0; font-size:14px; }
+  dl.info dt { color:var(--muted); font-weight:600; white-space:nowrap; }
+  dl.info dd { margin:0; word-break:break-all; }
+  dl.info dd a { color:var(--accent); text-decoration:none; }
+  dl.info dd a:hover { text-decoration:underline; }
+  section.block {
+    background:var(--panel); border:1px solid var(--border); border-radius:10px;
+    padding:16px 18px 20px; margin-bottom:28px;
+    box-shadow:0 1px 3px rgba(20,30,50,.06);
+  }
+  section.block > h2 {
+    margin:0 0 14px; font-size:15px; font-weight:700; color:var(--accent);
+    background:var(--accent-bg); border-left:4px solid var(--accent);
+    padding:8px 12px; border-radius:4px;
+  }
+  table.map { width:100%; border-collapse:collapse; font-size:13.5px; }
+  table.map th, table.map td {
+    border:1px solid var(--border); padding:8px 10px; text-align:left; vertical-align:top;
+  }
+  table.map thead th {
+    background:var(--accent-bg); color:var(--accent); font-weight:700; white-space:nowrap;
+  }
+  table.map tbody tr:nth-child(even) { background:rgba(37,99,168,.03); }
+  table.map tbody tr.flagged { background:var(--flag-bg); color:var(--flag-ink); }
+  table.map td.no { text-align:center; width:3.5em; }
+  table.map td a { color:var(--accent); text-decoration:none; }
+  table.map td a:hover { text-decoration:underline; }
+  .badge { display:inline-block; font-size:11.5px; font-weight:700; padding:2px 8px; border-radius:999px; margin-left:6px; }
+  .badge.abolish { background:var(--badge-abolish-bg); color:var(--badge-abolish-ink); }
+  .badge.dup { background:var(--badge-dup-bg); color:var(--badge-dup-ink); }
+  footer { text-align:center; color:var(--muted); font-size:12px; margin-top:8px; }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg:#1a1d23; --panel:#242830; --border:#3a4048; --ink:#e6e9ee; --muted:#9aa5b3;
+      --accent:#6fb0e6; --accent-bg:#2b3644; --flag-bg:#20242b; --flag-ink:#7d8794;
+      --badge-abolish-bg:#4a2323; --badge-abolish-ink:#f2a29c;
+      --badge-dup-bg:#463319; --badge-dup-ink:#f0c987;
+    }
+  }
+</style>
+</head>
+<body>
+<div class="doc">
+<header class="meta">
+<h1>帳票出力_画面関連一覧（どの画面から帳票を出力するかの関連）</h1>
+</header>
+<section class="block">
+<h2>予算書 帳票→画面 対応表</h2>
+<table class="map">
+<thead><tr><th>項番</th><th>帳票番号・帳票名</th><th>現行画面名</th><th>現行画面ルート</th><th>帳票出力が紐づく
+新システム画面名</th><th>備考</th></tr></thead>
+<tbody>
+<tr>
+<td class="no">1</td>
+<td>BRP2010_予算自動仕訳エラーリスト</td>
+<td>ー</td>
+<td>ー</td>
+<td><a href="https://gyosei.dev68.jp/yosan/budget-document-creation/" target="_blank" rel="noopener">予算仕訳 予算書作成 ↗</a></td>
+<td></td>
+</tr><tr class="flagged">
+<td class="no">2</td>
+<td>BRP2020_予算科目調整モニタリスト</td>
+<td></td>
+<td></td>
+<td><a href="https://gyosei.dev68.jp/yosan/budget-account-adjustment-input/" target="_blank" rel="noopener">予算科目／仕訳科目調整入力 ↗</a></td>
+<td><span class="badge abolish">廃止</span></td>
+</tr><tr class="flagged">
+<td class="no">3</td>
+<td>BRP2030_仕訳科目調整モニタリスト</td>
+<td></td>
+<td></td>
+<td><a href="https://gyosei.dev68.jp/yosan/budget-account-adjustment-input/" target="_blank" rel="noopener">予算科目／仕訳科目調整入力 ↗</a></td>
+<td><span class="badge abolish">廃止</span></td>
+</tr><tr>
+<td class="no">4</td>
+<td>BRP9010_消費税額集計表(実データ: frame_id=11 / fiscal_year=2023 (12=補正分のみ))</td>
+<td>消費税額集計表作成</td>
+<td>予算書＞消費税作表＞[消費税額集計表]</td>
+<td><a href="https://gyosei.dev68.jp/yosan/consumption-tax-summary/" target="_blank" rel="noopener">消費税額集計表 ↗</a></td>
+<td></td>
+</tr><tr>
+<td class="no">5</td>
+<td>BRP9020_消費税額計算書</td>
+<td>消費税額計算書作成</td>
+<td>予算書＞消費税作表＞[消費税額計算書]</td>
+<td><a href="https://gyosei.dev68.jp/yosan/consumption-tax-calculation/" target="_blank" rel="noopener">消費税額計算書 ↗</a></td>
+<td></td>
+</tr><tr>
+<td class="no">6</td>
+<td>BRP9020_消費税額計算書_01_ブロック集計</td>
+<td>消費税額計算書作成</td>
+<td>予算書＞消費税作表＞[消費税額計算書]</td>
+<td><a href="https://gyosei.dev68.jp/yosan/consumption-tax-calculation/" target="_blank" rel="noopener">消費税額計算書 ↗</a></td>
+<td></td>
+</tr><tr>
+<td class="no">7</td>
+<td>BRP9020_消費税額計算書_02_ブロック配下セグメント集計</td>
+<td>消費税額計算書作成</td>
+<td>予算書＞消費税作表＞[消費税額計算書]</td>
+<td><a href="https://gyosei.dev68.jp/yosan/consumption-tax-calculation/" target="_blank" rel="noopener">消費税額計算書 ↗</a></td>
+<td></td>
+</tr><tr>
+<td class="no">8</td>
+<td>BRP9020_消費税額計算書_軽減税率</td>
+<td>消費税額計算書作成</td>
+<td>予算書＞消費税作表＞[消費税額計算書]</td>
+<td><a href="https://gyosei.dev68.jp/yosan/consumption-tax-calculation/" target="_blank" rel="noopener">消費税額計算書 ↗</a></td>
+<td></td>
+</tr><tr>
+<td class="no">9</td>
+<td>BRP9030_予算仕訳リスト／予算科目別</td>
+<td>予算仕訳リスト/予算科目別作成</td>
+<td>予算書＞予算仕訳＞[予算仕訳リスト（予算科目別）]</td>
+<td><a href="https://gyosei.dev68.jp/yosan/budget_sorting_profit-and-loss/" target="_blank" rel="noopener">予算仕訳 ↗</a></td>
+<td></td>
+</tr><tr>
+<td class="no">10</td>
+<td>BRP9040_予算仕訳リスト／仕訳科目別</td>
+<td>予算仕訳リスト/仕訳科目別作成</td>
+<td>予算書＞予算仕訳＞[予算仕訳リスト（仕訳科目別）]</td>
+<td><a href="https://gyosei.dev68.jp/yosan/budget_sorting_profit-and-loss/" target="_blank" rel="noopener">予算仕訳 ↗</a></td>
+<td></td>
+</tr><tr>
+<td class="no">11</td>
+<td>BRP9050_当初予算実施計画書(横)</td>
+<td>当初予算実施計画書作成</td>
+<td>予算書＞予算書作成＞実施計画書＞[当初予算実施計画書（縦横）]</td>
+<td><a href="https://gyosei.dev68.jp/yosan/initial-budget-implementation-plan/" target="_blank" rel="noopener">当初予算執行計画 ↗</a></td>
+<td></td>
+</tr><tr>
+<td class="no">12</td>
+<td>BRP9051_当初予算実施計画書(縦)</td>
+<td>当初予算実施計画書作成</td>
+<td>予算書＞予算書作成＞実施計画書＞[当初予算実施計画書（縦横）]</td>
+<td><a href="https://gyosei.dev68.jp/yosan/initial-budget-implementation-plan/" target="_blank" rel="noopener">当初予算執行計画 ↗</a></td>
+<td></td>
+</tr><tr>
+<td class="no">13</td>
+<td>BRP9055_暫定予算実施計画書(横)</td>
+<td>暫定予算実施計画書作成</td>
+<td>予算書＞予算書作成＞実施計画書＞[暫定予算実施計画書（縦横）]</td>
+<td><a href="https://gyosei.dev68.jp/yosan/initial-budget-implementation-plan/" target="_blank" rel="noopener">当初予算執行計画（暫定区分） ↗</a></td>
+<td></td>
+</tr><tr>
+<td class="no">14</td>
+<td>BRP9056_暫定予算実施計画書(縦)</td>
+<td>暫定予算実施計画書作成</td>
+<td>予算書＞予算書作成＞実施計画書＞[暫定予算実施計画書（縦横）]</td>
+<td><a href="https://gyosei.dev68.jp/yosan/initial-budget-implementation-plan/" target="_blank" rel="noopener">当初予算執行計画（暫定区分） ↗</a></td>
+<td></td>
+</tr><tr>
+<td class="no">15</td>
+<td>BRP9060_補正予算実施計画書(横)</td>
+<td>補正予算実施計画書作成</td>
+<td>予算書＞予算書作成＞実施計画書＞[補正予算実施計画書（縦横）]</td>
+<td><a href="https://gyosei.dev68.jp/yosan/initial-budget-implementation-plan/" target="_blank" rel="noopener">当初予算執行計画（補正区分） ↗</a></td>
+<td></td>
+</tr><tr>
+<td class="no">16</td>
+<td>BRP9061_補正予算実施計画書(縦)</td>
+<td>補正予算実施計画書作成</td>
+<td>予算書＞予算書作成＞実施計画書＞[補正予算実施計画書（縦横）]</td>
+<td><a href="https://gyosei.dev68.jp/yosan/initial-budget-implementation-plan/" target="_blank" rel="noopener">当初予算執行計画（補正区分） ↗</a></td>
+<td></td>
+</tr><tr>
+<td class="no">17</td>
+<td>BRP9070_当初予算事項別明細書(横)</td>
+<td>当初予算事項別明細書作成</td>
+<td>予算書＞予算書作成＞事項別明細書＞[当初予算事項別明細書（縦横）]</td>
+<td><a href="https://gyosei.dev68.jp/yosan/item-detail-statement/" target="_blank" rel="noopener">予算事項別明細書 ↗</a></td>
+<td></td>
+</tr><tr>
+<td class="no">18</td>
+<td>BRP9071L_当初予算事項別明細書(縦)【左】</td>
+<td>当初予算事項別明細書作成</td>
+<td>予算書＞予算書作成＞事項別明細書＞[当初予算事項別明細書（縦横）]</td>
+<td><a href="https://gyosei.dev68.jp/yosan/item-detail-statement/" target="_blank" rel="noopener">予算事項別明細書 ↗</a></td>
+<td></td>
+</tr><tr>
+<td class="no">19</td>
+<td>BRP9071R_当初予算事項別明細書(縦)【右】</td>
+<td>当初予算事項別明細書作成</td>
+<td>予算書＞予算書作成＞事項別明細書＞[当初予算事項別明細書（縦横）]</td>
+<td><a href="https://gyosei.dev68.jp/yosan/item-detail-statement/" target="_blank" rel="noopener">予算事項別明細書 ↗</a></td>
+<td></td>
+</tr><tr>
+<td class="no">20</td>
+<td>BRP9072_当初予算実施計画明細書(横)</td>
+<td>当初予算実施計画明細書作成</td>
+<td>予算書＞予算書作成＞実施計画書＞[当初予算実施計画明細書（縦横）]</td>
+<td><a href="https://gyosei.dev68.jp/yosan/initial-budget-implementation-plan/" target="_blank" rel="noopener">当初予算執行計画 ↗</a></td>
+<td></td>
+</tr><tr>
+<td class="no">21</td>
+<td>BRP9073_当初予算実施計画明細書(縦)</td>
+<td>当初予算実施計画明細書作成</td>
+<td>予算書＞予算書作成＞実施計画書＞[当初予算実施計画明細書（縦横）]</td>
+<td><a href="https://gyosei.dev68.jp/yosan/initial-budget-implementation-plan/" target="_blank" rel="noopener">当初予算執行計画 ↗</a></td>
+<td></td>
+</tr><tr>
+<td class="no">22</td>
+<td>BRP9080_補正予算事項別明細書(横)</td>
+<td>補正予算事項別明細書作成</td>
+<td>予算書＞予算書作成＞事項別明細書＞[補正予算事項別明細書（縦横）]</td>
+<td><a href="https://gyosei.dev68.jp/yosan/item-detail-statement/" target="_blank" rel="noopener">予算事項別明細書 ↗</a></td>
+<td></td>
+</tr><tr>
+<td class="no">23</td>
+<td>BRP9081L_補正予算事項別明細書(縦)【左】</td>
+<td>補正予算事項別明細書作成</td>
+<td>予算書＞予算書作成＞事項別明細書＞[補正予算事項別明細書（縦横）]</td>
+<td><a href="https://gyosei.dev68.jp/yosan/item-detail-statement/" target="_blank" rel="noopener">予算事項別明細書 ↗</a></td>
+<td></td>
+</tr><tr>
+<td class="no">24</td>
+<td>BRP9081R_補正予算事項別明細書(縦)【右】</td>
+<td>補正予算事項別明細書作成</td>
+<td>予算書＞予算書作成＞事項別明細書＞[補正予算事項別明細書（縦横）]</td>
+<td><a href="https://gyosei.dev68.jp/yosan/item-detail-statement/" target="_blank" rel="noopener">予算事項別明細書 ↗</a></td>
+<td></td>
+</tr><tr>
+<td class="no">25</td>
+<td>BRP9082_補正予算実施計画明細書(横)</td>
+<td>補正予算事項別明細書作成</td>
+<td>予算書＞予算書作成＞事項別明細書＞[補正予算事項別明細書（縦横）]</td>
+<td><a href="https://gyosei.dev68.jp/yosan/initial-budget-implementation-plan/" target="_blank" rel="noopener">当初予算執行計画（補正区分） ↗</a></td>
+<td></td>
+</tr><tr>
+<td class="no">26</td>
+<td>BRP9083L_補正予算実施計画明細書(縦)【左】</td>
+<td>補正予算事項別明細書作成</td>
+<td>予算書＞予算書作成＞事項別明細書＞[補正予算事項別明細書（縦横）]</td>
+<td><a href="https://gyosei.dev68.jp/yosan/initial-budget-implementation-plan/" target="_blank" rel="noopener">当初予算執行計画（補正区分） ↗</a></td>
+<td></td>
+</tr><tr>
+<td class="no">27</td>
+<td>BRP9083R_補正予算実施計画明細書(縦)【右】</td>
+<td>補正予算事項別明細書作成</td>
+<td>予算書＞予算書作成＞事項別明細書＞[補正予算事項別明細書（縦横）]</td>
+<td><a href="https://gyosei.dev68.jp/yosan/initial-budget-implementation-plan/" target="_blank" rel="noopener">当初予算執行計画（補正区分） ↗</a></td>
+<td></td>
+</tr><tr>
+<td class="no">28</td>
+<td>BRP9090_暫定予算事項別明細書(横)</td>
+<td>暫定予算事項別明細書作成</td>
+<td>予算書＞予算書作成＞事項別明細書＞[暫定予算事項別明細書（縦横）]</td>
+<td><a href="https://gyosei.dev68.jp/yosan/item-detail-statement/" target="_blank" rel="noopener">予算事項別明細書 ↗</a></td>
+<td></td>
+</tr><tr>
+<td class="no">29</td>
+<td>BRP9091L_暫定予算事項別明細書(縦)【左】</td>
+<td>暫定予算事項別明細書作成</td>
+<td>予算書＞予算書作成＞事項別明細書＞[暫定予算事項別明細書（縦横）]</td>
+<td><a href="https://gyosei.dev68.jp/yosan/item-detail-statement/" target="_blank" rel="noopener">予算事項別明細書 ↗</a></td>
+<td></td>
+</tr><tr>
+<td class="no">30</td>
+<td>BRP9091R_暫定予算事項別明細書(縦)【右】</td>
+<td>暫定予算事項別明細書作成</td>
+<td>予算書＞予算書作成＞事項別明細書＞[暫定予算事項別明細書（縦横）]</td>
+<td><a href="https://gyosei.dev68.jp/yosan/item-detail-statement/" target="_blank" rel="noopener">予算事項別明細書 ↗</a></td>
+<td></td>
+</tr><tr>
+<td class="no">31</td>
+<td>BRP9092_暫定予算実施計画明細書(横)</td>
+<td>暫定予算事項別明細書作成</td>
+<td>予算書＞予算書作成＞事項別明細書＞[暫定予算事項別明細書（縦横）]</td>
+<td><a href="https://gyosei.dev68.jp/yosan/initial-budget-implementation-plan/" target="_blank" rel="noopener">当初予算執行計画（暫定区分） ↗</a></td>
+<td></td>
+</tr><tr>
+<td class="no">32</td>
+<td>BRP9093_暫定予算実施計画明細書(縦)</td>
+<td>暫定予算事項別明細書作成</td>
+<td>予算書＞予算書作成＞事項別明細書＞[暫定予算事項別明細書（縦横）]</td>
+<td><a href="https://gyosei.dev68.jp/yosan/initial-budget-implementation-plan/" target="_blank" rel="noopener">当初予算執行計画（暫定区分） ↗</a></td>
+<td></td>
+</tr><tr>
+<td class="no">33</td>
+<td>BRP9100_予定損益計算書_01_ブロック集計</td>
+<td>予定損益計算書作成</td>
+<td>予算書＞予算書作成＞予定損益貸借＞[予定損益計算書/円]</td>
+<td><a href="https://gyosei.dev68.jp/yosan/projected-profit-and-loss-statement/" target="_blank" rel="noopener">予定損益計算書 ↗</a></td>
+<td></td>
+</tr><tr>
+<td class="no">34</td>
+<td>BRP9100_予定損益計算書_02_ブロック配下セグメント集計</td>
+<td>予定損益計算書作成</td>
+<td>予算書＞予算書作成＞予定損益貸借＞[予定損益計算書/円]</td>
+<td><a href="https://gyosei.dev68.jp/yosan/projected-profit-and-loss-statement/" target="_blank" rel="noopener">予定損益計算書 ↗</a></td>
+<td></td>
+</tr><tr>
+<td class="no">35</td>
+<td>BRP9100_予定損益計算書(横)</td>
+<td>予定損益計算書作成</td>
+<td>予算書＞予算書作成＞予定損益貸借＞[予定損益計算書/円]</td>
+<td><a href="https://gyosei.dev68.jp/yosan/projected-profit-and-loss-statement/" target="_blank" rel="noopener">予定損益計算書 ↗</a></td>
+<td></td>
+</tr><tr>
+<td class="no">36</td>
+<td>BRP9100_予定損益計算書(縦)</td>
+<td>予定損益計算書作成</td>
+<td>予算書＞予算書作成＞予定損益貸借＞[予定損益計算書/円]</td>
+<td><a href="https://gyosei.dev68.jp/yosan/projected-profit-and-loss-statement/" target="_blank" rel="noopener">予定損益計算書 ↗</a></td>
+<td></td>
+</tr><tr>
+<td class="no">37</td>
+<td>BRP9105_予定損益計算書(横)※千円</td>
+<td>予定損益計算書作成</td>
+<td>予算書＞予算書作成＞予定損益貸借＞[予定損益計算書/千円丸め]</td>
+<td><a href="https://gyosei.dev68.jp/yosan/projected-profit-and-loss-statement-thousands/" target="_blank" rel="noopener">予定損益計算書（千円） ↗</a></td>
+<td></td>
+</tr><tr>
+<td class="no">38</td>
+<td>BRP9105_予定損益計算書(縦)※千円</td>
+<td>予定損益計算書作成</td>
+<td>予算書＞予算書作成＞予定損益貸借＞[予定損益計算書/千円丸め]</td>
+<td><a href="https://gyosei.dev68.jp/yosan/projected-profit-and-loss-statement-thousands/" target="_blank" rel="noopener">予定損益計算書（千円） ↗</a></td>
+<td></td>
+</tr><tr>
+<td class="no">39</td>
+<td>BRP9110_予定貸借対照表(横)</td>
+<td>予定貸借対照表作成</td>
+<td>予算書＞予算書作成＞予定損益貸借＞[予定貸借対照表/円]</td>
+<td><a href="https://gyosei.dev68.jp/yosan/projected-balance-sheet/" target="_blank" rel="noopener">予定貸借対照表 ↗</a></td>
+<td></td>
+</tr><tr>
+<td class="no">40</td>
+<td>BRP9110_予定貸借対照表(縦)</td>
+<td>予定貸借対照表作成</td>
+<td>予算書＞予算書作成＞予定損益貸借＞[予定貸借対照表/円]</td>
+<td><a href="https://gyosei.dev68.jp/yosan/projected-balance-sheet/" target="_blank" rel="noopener">予定貸借対照表 ↗</a></td>
+<td></td>
+</tr><tr>
+<td class="no">41</td>
+<td>BRP9124_予定貸借対照表(横)※千円</td>
+<td>予定貸借対照表作成</td>
+<td>予算書＞予算書作成＞予定損益貸借＞[予定貸借対照表/千円丸め]</td>
+<td><a href="https://gyosei.dev68.jp/yosan/projected-balance-sheet-thousands/" target="_blank" rel="noopener">予定貸借対照表（千円） ↗</a></td>
+<td></td>
+</tr><tr>
+<td class="no">42</td>
+<td>BRP9124_予定貸借対照表(縦)※千円</td>
+<td>予定貸借対照表作成</td>
+<td>予算書＞予算書作成＞予定損益貸借＞[予定貸借対照表/千円丸め]</td>
+<td><a href="https://gyosei.dev68.jp/yosan/projected-balance-sheet-thousands/" target="_blank" rel="noopener">予定貸借対照表（千円） ↗</a></td>
+<td></td>
+</tr><tr>
+<td class="no">43</td>
+<td>BRP9130_資金計画書_当初(横)※千円</td>
+<td>当初資金計画書作成</td>
+<td>予算書＞予算書作成＞資金計画書＞[当初資金計画書/千円丸め]</td>
+<td><a href="https://gyosei.dev68.jp/yosan/initial-funding-plan-thousands/" target="_blank" rel="noopener">当初資金計画（千円） ↗</a></td>
+<td></td>
+</tr><tr>
+<td class="no">44</td>
+<td>BRP9131_資金計画書_当初(縦)※千円</td>
+<td>当初資金計画書作成</td>
+<td>予算書＞予算書作成＞資金計画書＞[当初資金計画書/千円丸め]</td>
+<td><a href="https://gyosei.dev68.jp/yosan/initial-funding-plan-thousands/" target="_blank" rel="noopener">当初資金計画（千円） ↗</a></td>
+<td></td>
+</tr><tr>
+<td class="no">45</td>
+<td>BRP9136_資金計画書_当初(縦)</td>
+<td>当初資金計画書作成</td>
+<td>予算書＞予算書作成＞資金計画書＞[当初資金計画書]</td>
+<td><a href="https://gyosei.dev68.jp/yosan/initial-funding-plan/" target="_blank" rel="noopener">当初資金計画 ↗</a></td>
+<td></td>
+</tr><tr>
+<td class="no">46</td>
+<td>BRP9137_資金計画書_当初(横)</td>
+<td>当初資金計画書作成</td>
+<td>予算書＞予算書作成＞資金計画書＞[当初資金計画書]</td>
+<td><a href="https://gyosei.dev68.jp/yosan/initial-funding-plan/" target="_blank" rel="noopener">当初資金計画 ↗</a></td>
+<td></td>
+</tr><tr>
+<td class="no">47</td>
+<td>BRP9140_資金計画書_補正(横)※千円</td>
+<td>補正資金計画書作成</td>
+<td>予算書＞予算書作成＞資金計画書＞[補正資金計画書作成/千円丸め]</td>
+<td><a href="https://gyosei.dev68.jp/yosan/revised-funding-statement-thousands/" target="_blank" rel="noopener">補正資金計画（千円） ↗</a></td>
+<td></td>
+</tr><tr>
+<td class="no">48</td>
+<td>BRP9141_資金計画書_補正(縦)※千円</td>
+<td>補正資金計画書作成</td>
+<td>予算書＞予算書作成＞資金計画書＞[補正資金計画書作成/千円丸め]</td>
+<td><a href="https://gyosei.dev68.jp/yosan/revised-funding-statement-thousands/" target="_blank" rel="noopener">補正資金計画（千円） ↗</a></td>
+<td></td>
+</tr><tr>
+<td class="no">49</td>
+<td>BRP9145_資金計算書_補正(横)</td>
+<td>補正資金計画書作成</td>
+<td>予算書＞予算書作成＞資金計画書＞[補正資金計画書作成]</td>
+<td><a href="https://gyosei.dev68.jp/yosan/revised-funding-statement/" target="_blank" rel="noopener">補正資金計画 ↗</a></td>
+<td></td>
+</tr><tr>
+<td class="no">50</td>
+<td>BRP9146_資金計算書_補正(縦)</td>
+<td>補正資金計画書作成</td>
+<td>予算書＞予算書作成＞資金計画書＞[補正資金計画書作成]</td>
+<td><a href="https://gyosei.dev68.jp/yosan/revised-funding-statement/" target="_blank" rel="noopener">補正資金計画 ↗</a></td>
+<td></td>
+</tr><tr>
+<td class="no">51</td>
+<td>CFP1310_予定キャッシュ・フロー計算書(横)</td>
+<td>予定キャッシュ・フロー計算書作成</td>
+<td>予算書＞予算書作成＞キャッシュ・フロー＞[予定キャッシュ・フロー計算書作成]</td>
+<td><a href="https://gyosei.dev68.jp/yosan/projected-cash-flow-statement-horizontal/" target="_blank" rel="noopener">CF計算書（横） ↗</a></td>
+<td></td>
+</tr><tr>
+<td class="no">52</td>
+<td>CFP1310_予定キャッシュ・フロー計算書(横)※比較</td>
+<td>予定キャッシュ・フロー計算書作成</td>
+<td>予算書＞予算書作成＞キャッシュ・フロー＞[予定キャッシュ・フロー計算書作成]</td>
+<td><a href="https://gyosei.dev68.jp/yosan/projected-cash-flow-statement-horizontal/" target="_blank" rel="noopener">CF計算書（横） ↗</a></td>
+<td></td>
+</tr><tr>
+<td class="no">53</td>
+<td>CFP1310_予定キャッシュ・フロー計算書(縦)</td>
+<td>予定キャッシュ・フロー計算書作成</td>
+<td>予算書＞予算書作成＞キャッシュ・フロー＞[予定キャッシュ・フロー計算書作成]</td>
+<td><a href="https://gyosei.dev68.jp/yosan/projected-cash-flow-statement-vertical/" target="_blank" rel="noopener">CF計算書（縦） ↗</a></td>
+<td></td>
+</tr><tr>
+<td class="no">54</td>
+<td>CFP1310_予定キャッシュ・フロー計算書(縦)※比較</td>
+<td>予定キャッシュ・フロー計算書作成</td>
+<td>予算書＞予算書作成＞キャッシュ・フロー＞[予定キャッシュ・フロー計算書作成]</td>
+<td><a href="https://gyosei.dev68.jp/yosan/projected-cash-flow-statement-vertical/" target="_blank" rel="noopener">CF計算書（縦） ↗</a></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+</section>
+<footer>グレー行＝備考あり（廃止・重複等）。「新システム画面名」のリンクは新システムの実画面へ遷移します。</footer>
+</div>
+</body>
+</html>

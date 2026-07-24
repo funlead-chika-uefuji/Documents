@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>帳票出力_画面関連一覧（どの画面から帳票を出力するかの関連）</title>
+<style>
+  :root {
+    --bg:#f4f5f7; --panel:#ffffff; --border:#d0d4da; --ink:#1f2733;
+    --muted:#5b6675; --accent:#2563a8; --accent-bg:#eaf1f8;
+    --flag-bg:#f1f2f4; --flag-ink:#7a8290;
+    --badge-abolish-bg:#fdecea; --badge-abolish-ink:#b3261e;
+    --badge-dup-bg:#fff4e5; --badge-dup-ink:#9a6400;
+  }
+  * { box-sizing:border-box; }
+  body {
+    margin:0; padding:32px 20px; background:var(--bg); color:var(--ink);
+    font-family:"Meiryo","Yu Gothic","Hiragino Kaku Gothic ProN",-apple-system,sans-serif;
+    line-height:1.6; -webkit-font-smoothing:antialiased;
+  }
+  .doc { max-width:1240px; margin:0 auto; }
+  header.meta {
+    background:var(--panel); border:1px solid var(--border); border-radius:10px;
+    padding:20px 24px; margin-bottom:28px;
+    box-shadow:0 1px 3px rgba(20,30,50,.06);
+  }
+  header.meta h1 {
+    margin:0 0 14px; font-size:20px; font-weight:700; letter-spacing:.02em;
+    padding-bottom:12px; border-bottom:2px solid var(--accent);
+  }
+  dl.info { display:grid; grid-template-columns:max-content 1fr; gap:6px 16px; margin:0; font-size:14px; }
+  dl.info dt { color:var(--muted); font-weight:600; white-space:nowrap; }
+  dl.info dd { margin:0; word-break:break-all; }
+  dl.info dd a { color:var(--accent); text-decoration:none; }
+  dl.info dd a:hover { text-decoration:underline; }
+  section.block {
+    background:var(--panel); border:1px solid var(--border); border-radius:10px;
+    padding:16px 18px 20px; margin-bottom:28px;
+    box-shadow:0 1px 3px rgba(20,30,50,.06);
+  }
+  section.block > h2 {
+    margin:0 0 14px; font-size:15px; font-weight:700; color:var(--accent);
+    background:var(--accent-bg); border-left:4px solid var(--accent);
+    padding:8px 12px; border-radius:4px;
+  }
+  table.map { width:100%; border-collapse:collapse; font-size:13.5px; }
+  table.map th, table.map td {
+    border:1px solid var(--border); padding:8px 10px; text-align:left; vertical-align:top;
+  }
+  table.map thead th {
+    background:var(--accent-bg); color:var(--accent); font-weight:700; white-space:nowrap;
+  }
+  table.map tbody tr:nth-child(even) { background:rgba(37,99,168,.03); }
+  table.map tbody tr.flagged { background:var(--flag-bg); color:var(--flag-ink); }
+  table.map td.no { text-align:center; width:3.5em; }
+  table.map td a { color:var(--accent); text-decoration:none; }
+  table.map td a:hover { text-decoration:underline; }
+  .badge { display:inline-block; font-size:11.5px; font-weight:700; padding:2px 8px; border-radius:999px; margin-left:6px; }
+  .badge.abolish { background:var(--badge-abolish-bg); color:var(--badge-abolish-ink); }
+  .badge.dup { background:var(--badge-dup-bg); color:var(--badge-dup-ink); }
+  footer { text-align:center; color:var(--muted); font-size:12px; margin-top:8px; }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg:#1a1d23; --panel:#242830; --border:#3a4048; --ink:#e6e9ee; --muted:#9aa5b3;
+      --accent:#6fb0e6; --accent-bg:#2b3644; --flag-bg:#20242b; --flag-ink:#7d8794;
+      --badge-abolish-bg:#4a2323; --badge-abolish-ink:#f2a29c;
+      --badge-dup-bg:#463319; --badge-dup-ink:#f0c987;
+    }
+  }
+</style>
+</head>
+<body>
+<div class="doc">
+<header class="meta">
+<h1>帳票出力_画面関連一覧（どの画面から帳票を出力するかの関連）</h1>
+</header>
+<section class="block">
+<h2>予算編成 帳票→画面 対応表</h2>
+<table class="map">
+<thead><tr><th>項番</th><th>帳票番号・帳票名</th><th>現行画面名</th><th>現行画面ルート＞[ボタン名称]</th><th>帳票出力が紐づく
+新システム画面名</th><th>備考</th></tr></thead>
+<tbody>
+<tr class="flagged">
+<td class="no">1</td>
+<td>BFD6220_予算消費税仕訳一覧表</td>
+<td></td>
+<td></td>
+<td><a href="https://gyosei.dev68.jp/yosan/budget_sorting_consumption_tax/" target="_blank" rel="noopener">消費税 ↗</a></td>
+<td><span class="badge dup">項番２とダブり</span></td>
+</tr><tr>
+<td class="no">2</td>
+<td>BFP6220_予算消費税仕訳一覧表</td>
+<td>予算消費税仕訳一覧</td>
+<td>予算編成＞消費税業務＞納税計算＞[予算消費税仕訳一覧]</td>
+<td><a href="https://gyosei.dev68.jp/yosan/budget_sorting_consumption_tax/" target="_blank" rel="noopener">消費税 ↗</a></td>
+<td></td>
+</tr><tr>
+<td class="no">3</td>
+<td>BFP6240_納付税額算出表(旧税率無し)(実データ: frame_id=11 / fiscal_year=2023)</td>
+<td>予算納付税額算出表</td>
+<td>予算編成＞消費税業務＞納税計算＞[予算納付税額算出表]</td>
+<td><a href="https://gyosei.dev68.jp/yosan/consumption-tax-calculation/" target="_blank" rel="noopener">消費税額計算書 ↗</a></td>
+<td></td>
+</tr><tr>
+<td class="no">4</td>
+<td>BFP6240_納付税額算出表(旧税率有り)(実データ: frame_id=11 / fiscal_year=2023)</td>
+<td>予算納付税額算出表</td>
+<td>予算編成＞消費税業務＞納税計算＞[予算納付税額算出表]</td>
+<td><a href="https://gyosei.dev68.jp/yosan/consumption-tax-calculation/" target="_blank" rel="noopener">消費税額計算書 ↗</a></td>
+<td></td>
+</tr><tr>
+<td class="no">5</td>
+<td>BFP9010_新年度単価一覧表(単価ｺｰﾄﾞ別)</td>
+<td>新年度単価一覧表作成</td>
+<td>予算編成＞予算編成準備＞[新年度単価一覧表]</td>
+<td><a href="https://gyosei.dev68.jp/yosan/estimate_bulk-designation/" target="_blank" rel="noopener">単価マスタ改定 ↗</a></td>
+<td></td>
+</tr><tr>
+<td class="no">6</td>
+<td>BFP9011_新年度単価一覧表(所属別)</td>
+<td>新年度単価一覧表作成</td>
+<td>予算編成＞予算編成準備＞[新年度単価一覧表]</td>
+<td><a href="https://gyosei.dev68.jp/yosan/estimate_bulk-designation/" target="_blank" rel="noopener">単価マスタ改定 ↗</a></td>
+<td></td>
+</tr><tr class="flagged">
+<td class="no">7</td>
+<td>BFP9020_枠配分総括表</td>
+<td></td>
+<td></td>
+<td><a href="https://gyosei.dev68.jp/yosan/estimate_sealing/" target="_blank" rel="noopener">シーリング又は枠配分設定 ↗</a></td>
+<td><span class="badge abolish">廃止</span></td>
+</tr><tr class="flagged">
+<td class="no">8</td>
+<td>BFP9030_枠配分通知書</td>
+<td></td>
+<td></td>
+<td><a href="https://gyosei.dev68.jp/yosan/estimate_sealing/" target="_blank" rel="noopener">シーリング又は枠配分設定 ↗</a></td>
+<td><span class="badge abolish">廃止</span></td>
+</tr><tr class="flagged">
+<td class="no">9</td>
+<td>BFP9040_予算見積要求書(記入用)</td>
+<td></td>
+<td></td>
+<td><a href="https://gyosei.dev68.jp/yosan/estimate_request_registration/" target="_blank" rel="noopener">見積要求入力 ↗</a></td>
+<td><span class="badge abolish">廃止</span></td>
+</tr><tr class="flagged">
+<td class="no">10</td>
+<td>BFP9050_調整額一覧表(科目別)</td>
+<td></td>
+<td></td>
+<td><a href="https://gyosei.dev68.jp/yosan/estimate-adjustment-simulation/" target="_blank" rel="noopener">見積要求額調整シミュレーション ↗</a></td>
+<td><span class="badge abolish">廃止</span></td>
+</tr><tr class="flagged">
+<td class="no">11</td>
+<td>BFP9050_調整額一覧表(所属別)</td>
+<td></td>
+<td></td>
+<td><a href="https://gyosei.dev68.jp/yosan/estimate-adjustment-simulation/" target="_blank" rel="noopener">見積要求額調整シミュレーション ↗</a></td>
+<td><span class="badge abolish">廃止</span></td>
+</tr><tr>
+<td class="no">12</td>
+<td>BFP9100_予算査定一覧表(科目別)</td>
+<td>予算査定一覧表作成</td>
+<td>予算編成＞査定処理＞[予算査定一覧表]</td>
+<td><a href="https://gyosei.dev68.jp/yosan/budget-request-audit/" target="_blank" rel="noopener">予算要求・査定統合 ↗</a></td>
+<td></td>
+</tr><tr>
+<td class="no">13</td>
+<td>BFP9101_予算査定一覧表(所属別)</td>
+<td>予算査定一覧表作成</td>
+<td>予算編成＞査定処理＞[予算査定一覧表]</td>
+<td><a href="https://gyosei.dev68.jp/yosan/budget-request-audit/" target="_blank" rel="noopener">予算要求・査定統合 ↗</a></td>
+<td></td>
+</tr><tr>
+<td class="no">14</td>
+<td>BFP9170_予算見積要求書(科目別)</td>
+<td>予算見積要求書作成</td>
+<td>予算編成＞見積要求処理＞[予算見積要求書]</td>
+<td><a href="https://gyosei.dev68.jp/yosan/estimate_request_registration/" target="_blank" rel="noopener">見積要求入力 ↗</a></td>
+<td></td>
+</tr><tr>
+<td class="no">15</td>
+<td>BFP9170_予算見積要求書(科目別)※税率印字</td>
+<td>予算見積要求書作成</td>
+<td>予算編成＞見積要求処理＞[予算見積要求書]</td>
+<td><a href="https://gyosei.dev68.jp/yosan/estimate_request_registration/" target="_blank" rel="noopener">見積要求入力 ↗</a></td>
+<td></td>
+</tr><tr>
+<td class="no">16</td>
+<td>BFP9170_予算見積要求書(所属別)</td>
+<td>予算見積要求書作成</td>
+<td>予算編成＞見積要求処理＞[予算見積要求書]</td>
+<td><a href="https://gyosei.dev68.jp/yosan/estimate_request_registration/" target="_blank" rel="noopener">見積要求入力 ↗</a></td>
+<td></td>
+</tr><tr>
+<td class="no">17</td>
+<td>BFP9170_予算見積要求書(所属別)※税率印字</td>
+<td>予算見積要求書作成</td>
+<td>予算編成＞見積要求処理＞[予算見積要求書]</td>
+<td><a href="https://gyosei.dev68.jp/yosan/estimate_request_registration/" target="_blank" rel="noopener">見積要求入力 ↗</a></td>
+<td></td>
+</tr><tr>
+<td class="no">18</td>
+<td>BFP9180_予算集計表</td>
+<td>予算集計表作成</td>
+<td>予算編成＞見積要求処理＞[予算集計表]</td>
+<td><a href="https://gyosei.dev68.jp/yosan/budget-request-audit/" target="_blank" rel="noopener">予算要求・査定統合 ↗</a></td>
+<td></td>
+</tr><tr class="flagged">
+<td class="no">19</td>
+<td>JFP1050_事業別見積要求書(記入用・当初)</td>
+<td></td>
+<td></td>
+<td><a href="https://gyosei.dev68.jp/yosan/estimate_request_registration/" target="_blank" rel="noopener">見積要求入力 ↗</a></td>
+<td><span class="badge abolish">廃止</span></td>
+</tr><tr>
+<td class="no">20</td>
+<td>JFP1060_事業別見積要求書(当初)</td>
+<td>予算見積要求書作成</td>
+<td>予算編成＞見積要求処理＞[予算見積要求書]</td>
+<td><a href="https://gyosei.dev68.jp/yosan/estimate_request_registration/" target="_blank" rel="noopener">見積要求入力 ↗</a></td>
+<td></td>
+</tr><tr>
+<td class="no">21</td>
+<td>JFP1060_事業別見積要求書(当初)※税率印字</td>
+<td>予算見積要求書作成</td>
+<td>予算編成＞見積要求処理＞[予算見積要求書]</td>
+<td><a href="https://gyosei.dev68.jp/yosan/estimate_request_registration/" target="_blank" rel="noopener">見積要求入力 ↗</a></td>
+<td></td>
+</tr><tr>
+<td class="no">22</td>
+<td>JFP1070_事業別見積予算集計表(当初)</td>
+<td>予算集計表作成</td>
+<td>予算編成＞決算見込/決算確定処理＞[予算集計表]</td>
+<td><a href="https://gyosei.dev68.jp/yosan/budget-request-audit/" target="_blank" rel="noopener">予算要求・査定統合 ↗</a></td>
+<td></td>
+</tr><tr>
+<td class="no">23</td>
+<td>JFP1080_事業別予算査定一覧表(当初)</td>
+<td>予算査定一覧表作成</td>
+<td>予算編成＞査定処理＞[予算査定一覧表]</td>
+<td><a href="https://gyosei.dev68.jp/yosan/budget-request-audit/" target="_blank" rel="noopener">予算要求・査定統合 ↗</a></td>
+<td></td>
+</tr><tr class="flagged">
+<td class="no">24</td>
+<td>JFP1090_収入支出予算事業別集計表(当初)</td>
+<td></td>
+<td></td>
+<td><a href="https://gyosei.dev68.jp/yosan/budget-request-audit/" target="_blank" rel="noopener">予算要求・査定統合 ↗</a></td>
+<td><span class="badge abolish">廃止</span></td>
+</tr><tr>
+<td class="no">25</td>
+<td>JFP2030_事業別見積要求書(補正)</td>
+<td>予算見積要求書作成</td>
+<td>予算編成＞見積要求処理＞[予算見積要求書]</td>
+<td><a href="https://gyosei.dev68.jp/yosan/estimate_request_registration/" target="_blank" rel="noopener">見積要求入力 ↗</a></td>
+<td></td>
+</tr><tr>
+<td class="no">26</td>
+<td>JFP2030_事業別見積要求書(補正)※税率印字</td>
+<td>予算見積要求書作成</td>
+<td>予算編成＞見積要求処理＞[予算見積要求書]</td>
+<td><a href="https://gyosei.dev68.jp/yosan/estimate_request_registration/" target="_blank" rel="noopener">見積要求入力 ↗</a></td>
+<td></td>
+</tr><tr>
+<td class="no">27</td>
+<td>JFP2040_事業別見積予算集計表(補正)</td>
+<td>予算集計表作成</td>
+<td>予算編成＞決算見込/決算確定処理＞[予算集計表]</td>
+<td><a href="https://gyosei.dev68.jp/yosan/budget-request-audit/" target="_blank" rel="noopener">予算要求・査定統合 ↗</a></td>
+<td></td>
+</tr><tr>
+<td class="no">28</td>
+<td>JFP2050_事業別予算査定一覧表(補正)</td>
+<td>予算査定一覧表作成</td>
+<td>予算編成＞査定処理＞[予算査定一覧表]</td>
+<td><a href="https://gyosei.dev68.jp/yosan/budget-request-audit/" target="_blank" rel="noopener">予算要求・査定統合 ↗</a></td>
+<td></td>
+</tr><tr class="flagged">
+<td class="no">29</td>
+<td>JFP2060_収入支出予算事業別集計表(補正)</td>
+<td></td>
+<td></td>
+<td><a href="https://gyosei.dev68.jp/yosan/budget-request-audit/" target="_blank" rel="noopener">予算要求・査定統合 ↗</a></td>
+<td><span class="badge abolish">廃止</span></td>
+</tr><tr class="flagged">
+<td class="no">30</td>
+<td>JFP3010_事業別執行状況集計表</td>
+<td></td>
+<td></td>
+<td><a href="https://gyosei.dev68.jp/yosan/execution-plan-table/" target="_blank" rel="noopener">執行計画一覧表 ↗</a></td>
+<td><span class="badge abolish">廃止</span></td>
+</tr><tr class="flagged">
+<td class="no">31</td>
+<td>JFP3020_事業別執行明細表</td>
+<td></td>
+<td></td>
+<td><a href="https://gyosei.dev68.jp/yosan/execution_plan/" target="_blank" rel="noopener">執行計画入力 ↗</a></td>
+<td><span class="badge abolish">廃止</span></td>
+</tr><tr class="flagged">
+<td class="no">32</td>
+<td>JFP3030_事業別予算執行状況集計表</td>
+<td></td>
+<td></td>
+<td><a href="https://gyosei.dev68.jp/yosan/execution-plan-table/" target="_blank" rel="noopener">執行計画一覧表 ↗</a></td>
+<td><span class="badge abolish">廃止</span></td>
+</tr><tr class="flagged">
+<td class="no">33</td>
+<td>JFP3040_事業別予算執行明細表</td>
+<td></td>
+<td></td>
+<td><a href="https://gyosei.dev68.jp/yosan/execution_plan/" target="_blank" rel="noopener">執行計画入力 ↗</a></td>
+<td><span class="badge abolish">廃止</span></td>
+</tr><tr class="flagged">
+<td class="no">34</td>
+<td>JFP4030_実施計画明細表(所属別）</td>
+<td></td>
+<td></td>
+<td><a href="https://gyosei.dev68.jp/yosan/implementation-plan-detail/" target="_blank" rel="noopener">実施計画明細表 ↗</a></td>
+<td><span class="badge abolish">廃止</span></td>
+</tr><tr class="flagged">
+<td class="no">35</td>
+<td>JFP4031_実施計画明細表(事業別）</td>
+<td></td>
+<td></td>
+<td><a href="https://gyosei.dev68.jp/yosan/implementation-plan-detail/" target="_blank" rel="noopener">実施計画明細表 ↗</a></td>
+<td><span class="badge abolish">廃止</span></td>
+</tr><tr>
+<td class="no">36</td>
+<td>STD3290_対前年度比較表</td>
+<td>前年度比較表</td>
+<td>予算編成＞査定処理＞[対前年度比較表]</td>
+<td><a href="https://gyosei.dev68.jp/yosan/budget-request-audit/" target="_blank" rel="noopener">予算要求・査定統合 ↗</a></td>
+<td></td>
+</tr><tr>
+<td class="no">37</td>
+<td>YHP3010_執行計画表</td>
+<td>執行計画表</td>
+<td>予算編成＞執行計画＞[執行計画表]</td>
+<td><a href="https://gyosei.dev68.jp/yosan/execution_plan/" target="_blank" rel="noopener">執行計画入力 ↗</a></td>
+<td></td>
+</tr><tr>
+<td class="no">38</td>
+<td>YHP3020_予算配当表</td>
+<td>予算配当表</td>
+<td>予算編成＞執行計画＞[予算配当表]</td>
+<td><a href="https://gyosei.dev68.jp/yosan/budget-allocation-table/" target="_blank" rel="noopener">予算配当表 ↗</a></td>
+<td></td>
+</tr><tr>
+<td class="no">39</td>
+<td>YHP3030_予算配当総括表</td>
+<td>予算配当統括表</td>
+<td>予算編成＞執行計画＞[予算配当統括表]</td>
+<td><a href="https://gyosei.dev68.jp/yosan/budget-allocation-summary-table/" target="_blank" rel="noopener">予算配当総括表 ↗</a></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+</section>
+<footer>グレー行＝備考あり（廃止・重複等）。「新システム画面名」のリンクは新システムの実画面へ遷移します。</footer>
+</div>
+</body>
+</html>

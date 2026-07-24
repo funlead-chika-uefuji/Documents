@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>【ワイヤー】取得資産対象登録</title>
+<style>
+  * { box-sizing:border-box; }
+  body { margin:0; background:#eef1f4; font-family:"Meiryo","Noto Sans JP","Yu Gothic",sans-serif; }
+  .canvas { position:relative; width:1366px; height:768px; margin:24px auto; background:#fff;
+             box-shadow:0 2px 12px rgba(20,30,50,.15); overflow:hidden; }
+  .chrome-header { position:absolute; left:0; top:0; width:100%; height:72px; background:#E4F5FF;
+                     border-bottom:1px solid #C2CAD2; display:flex; align-items:center; justify-content:space-between;
+                     padding:0 16px; color:#1B6DB4; font-weight:700; font-size:13px; }
+  .chrome-header .user { color:#8893A0; font-weight:400; font-size:11px; }
+  .sidebar { position:absolute; left:0; top:72px; width:280px; height:calc(100% - 72px);
+              background:#F1F9FF; border-right:1px solid #C2CAD2; padding:8px 10px; }
+  .sidebar .menu-label { color:#8893A0; font-weight:700; font-size:10px; margin:4px 4px 8px; }
+  .menu-item { background:#fff; border:1px solid #E0E6EC; border-radius:2px; padding:6px 8px; margin-bottom:6px;
+                font-size:9px; color:#8893A0; }
+  .menu-item.active { background:#DBEBF5; border-color:#9AA5B1; color:#1B6DB4; font-weight:700; }
+  .breadcrumb { position:absolute; left:296px; top:72px; width:1054px; height:28px;
+                 font-size:9px; color:#8893A0; display:flex; align-items:center; }
+  .title-row { position:absolute; left:296px; top:100px; width:1054px; height:44px;
+                display:flex; align-items:center; justify-content:space-between; }
+  .title-row h1 { font-size:18px; font-weight:700; color:#212529; margin:0; }
+  .id-badge { background:#DBEBF5; border:1px solid #1B6DB4; color:#1B6DB4; border-radius:13px;
+               padding:5px 14px; font-size:10px; font-weight:700; }
+  .tab-row { position:absolute; left:296px; top:150px; width:1054px; height:32px; }
+  .tab { display:inline-block; background:#DBEBF5; border:1px solid #9AA5B1; border-radius:8px;
+          padding:6px 18px; font-size:10px; font-weight:700; color:#1B6DB4; }
+  .footer { position:absolute; left:0; bottom:0; width:100%; height:36px; background:#F8FAFC;
+             border-top:1px solid #C2CAD2; display:flex; align-items:center; padding:0 16px; font-size:9px; color:#8893A0; }
+  .box { position:absolute; font-size:11px; color:#3F4A56; }
+  .box.section { background:#F3F5F7; border:1px solid #D7DDE3; border-radius:8px; }
+  .box.section .section-title { position:absolute; left:8px; top:4px; font-weight:700; font-size:11px; }
+  .box.field { background:#FFFFFF; border:1px solid #9AA5B1; display:flex; align-items:center; padding:0 6px; }
+  .box.button { background:#EDF1F5; border:1px solid #9AA5B1; border-radius:8px; display:flex; align-items:center;
+                 justify-content:center; font-weight:700; text-align:center; }
+  .box.select, .box.stepper { background:#FFFFFF; border:1px solid #9AA5B1; display:flex; align-items:center;
+                 padding:0 6px; justify-content:space-between; }
+  .box.select .chev, .box.stepper .stp { color:#8893A0; font-size:9px; }
+  .box.radio-row, .box.checkbox-row { display:flex; align-items:center; gap:6px; }
+  .radio-dot { width:14px; height:14px; border-radius:50%; border:1px solid #9AA5B1; background:#fff; flex:none; }
+  .checkbox-row .radio-dot { border-radius:2px; }
+  .annot { position:absolute; left:0; bottom:-13px; font-size:7px; color:#1B6DB4; white-space:nowrap; }
+</style>
+</head>
+<body>
+<div class="canvas">
+  <div class="chrome-header"><span>GYS 公営企業会計システム</span><span class="user">user ▾</span></div>
+  <div class="sidebar">
+    <div class="menu-label">メニュー</div>
+    <div class="menu-item">メニュー項目 1</div>
+<div class="menu-item active">メニュー項目 2</div>
+<div class="menu-item">メニュー項目 3</div>
+<div class="menu-item">メニュー項目 4</div>
+<div class="menu-item">メニュー項目 5</div>
+<div class="menu-item">メニュー項目 6</div>
+<div class="menu-item">メニュー項目 7</div>
+<div class="menu-item">メニュー項目 8</div>
+  </div>
+  <div class="breadcrumb">予算編成 &gt; 固定資産 &gt; 取得資産対象登録</div>
+  <div class="title-row"><h1>取得資産対象登録</h1><span class="id-badge">BFD_ASSET_REG</span></div>
+  <div class="tab-row"><span class="tab">登録</span></div>
+  <div class="box radio-row" style="left:612.2px;top:186.9px;width:421.6px;height:29.7px;"><span class="radio-dot"></span><span class="lbl">●登録　○訂正　○削除</span><div class="annot">⟦RadioGroup §3.2.18⟧  token:primary</div></div>
+<div class="box section" style="left:317.1px;top:226.6px;width:495.4px;height:64.3px;"><div class="section-title">登録区分</div></div>
+<div class="box radio-row" style="left:338.2px;top:246.3px;width:453.2px;height:34.6px;"><span class="radio-dot"></span><span class="lbl">●本登録　○一部科目更正</span><div class="annot">⟦RadioGroup §3.2.18⟧  token:primary</div></div>
+<div class="box button" style="left:317.1px;top:300.8px;width:137.0px;height:29.7px;"><span>資産番号</span><div class="annot">⟦(新規)コード検索ボタン⟧</div></div>
+<div class="box field" style="left:464.6px;top:300.8px;width:147.6px;height:29.7px;"><span>5050012800</span><div class="annot">token:bg-input</div></div>
+<div class="box button" style="left:622.7px;top:300.8px;width:126.5px;height:29.7px;"><span>登録参照番号</span><div class="annot">⟦(新規)無効状態ボタン⟧  token:bg-readonly</div></div>
+<div class="box field" style="left:759.8px;top:300.8px;width:52.7px;height:29.7px;"><span></span><div class="annot">token:bg-readonly</div></div>
+<div class="box field" style="left:317.1px;top:340.4px;width:495.4px;height:29.7px;"><span>節</span><div class="annot">token:bg-input</div></div>
+<div class="box field" style="left:317.1px;top:375.1px;width:495.4px;height:29.7px;"><span>細節</span><div class="annot">token:bg-input</div></div>
+<div class="box field" style="left:317.1px;top:409.7px;width:221.3px;height:29.7px;"><span>明細</span><div class="annot">token:bg-input</div></div>
+<div class="box button" style="left:549.0px;top:409.7px;width:137.0px;height:29.7px;"><span>科目検索</span><div class="annot">⟦Mainボタン(科目マスタ検索)⟧  token:primary-light</div></div>
+<div class="box field" style="left:317.1px;top:444.4px;width:495.4px;height:29.7px;"><span>資産名称</span><div class="annot">token:bg-input</div></div>
+<div class="box field" style="left:317.1px;top:479.0px;width:495.4px;height:29.7px;"><span>異動摘要　取得</span><div class="annot">token:bg-input</div></div>
+<div class="box button" style="left:317.1px;top:513.6px;width:137.0px;height:29.7px;"><span>所在地</span><div class="annot">⟦(新規)住所検索ボタン⟧</div></div>
+<div class="box field" style="left:464.6px;top:513.6px;width:347.8px;height:54.5px;"><span>（住所2行）</span><div class="annot">token:bg-input</div></div>
+<div class="box button" style="left:317.1px;top:573.0px;width:137.0px;height:29.7px;"><span>施設</span><div class="annot">⟦(新規)コード検索ボタン⟧</div></div>
+<div class="box field" style="left:464.6px;top:573.0px;width:347.8px;height:29.7px;"><span></span><div class="annot">token:bg-input</div></div>
+<div class="box button" style="left:317.1px;top:607.7px;width:137.0px;height:29.7px;"><span>部門</span><div class="annot">⟦(新規)コード検索ボタン⟧</div></div>
+<div class="box field" style="left:464.6px;top:607.7px;width:347.8px;height:29.7px;"><span></span><div class="annot">token:bg-input</div></div>
+<div class="box button" style="left:317.1px;top:642.4px;width:137.0px;height:34.6px;"><span>地区</span><div class="annot">⟦(新規)コード検索ボタン⟧</div></div>
+<div class="box field" style="left:464.6px;top:642.4px;width:347.8px;height:34.6px;"><span></span><div class="annot">token:bg-input</div></div>
+<div class="box section" style="left:833.5px;top:226.6px;width:495.4px;height:64.3px;"><div class="section-title">参照負担情報</div></div>
+<div class="box stepper" style="left:854.6px;top:246.3px;width:210.8px;height:19.8px;"><span>負担年度　令和06</span><span class="stp">▲▼</span><div class="annot">⟦InputText+Stepper(独自)⟧  token:bg-input</div></div>
+<div class="box button" style="left:854.6px;top:271.1px;width:189.7px;height:19.8px;"><span>負担番号</span><div class="annot">⟦(新規)コード検索ボタン⟧</div></div>
+<div class="box field" style="left:1054.9px;top:271.1px;width:105.4px;height:19.8px;"><span>明細番号</span><div class="annot">token:bg-input</div></div>
+<div class="box select" style="left:833.5px;top:305.8px;width:495.4px;height:29.7px;"><span>会計区分</span><span class="chev">▼</span><div class="annot">⟦SelectBox §3.2.15⟧  token:bg-input</div></div>
+<div class="box stepper" style="left:833.5px;top:345.4px;width:231.9px;height:29.7px;"><span>施工年度</span><span class="stp">▲▼</span><div class="annot">⟦InputText+Stepper(独自)⟧  token:bg-input</div></div>
+<div class="box field" style="left:1086.5px;top:345.4px;width:242.4px;height:29.7px;"><span>竣工年月日　＿年＿月＿日</span><div class="annot">token:bg-input</div></div>
+<div class="box button" style="left:833.5px;top:384.9px;width:158.1px;height:29.7px;"><span>業者</span><div class="annot">⟦(新規)コード検索ボタン⟧</div></div>
+<div class="box field" style="left:1012.7px;top:384.9px;width:316.2px;height:29.7px;"><span></span><div class="annot">token:bg-input</div></div>
+<div class="box button" style="left:833.5px;top:424.6px;width:158.1px;height:29.7px;"><span>所属</span><div class="annot">⟦(新規)コード検索ボタン⟧</div></div>
+<div class="box field" style="left:1012.7px;top:424.6px;width:316.2px;height:29.7px;"><span></span><div class="annot">token:bg-input</div></div>
+<div class="box field" style="left:833.5px;top:464.2px;width:495.4px;height:29.7px;"><span>取得年月日　令和07年03月31日</span><div class="annot">token:bg-readonly</div></div>
+<div class="box field" style="left:833.5px;top:503.8px;width:495.4px;height:29.7px;"><span>取得価額　0</span><div class="annot">token:bg-input</div></div>
+<div class="box section" style="left:833.5px;top:543.4px;width:284.6px;height:69.3px;"><div class="section-title">償却方法</div></div>
+<div class="box radio-row" style="left:854.6px;top:563.1px;width:126.5px;height:19.8px;"><span class="radio-dot"></span><span class="lbl">●定額法</span><div class="annot">token:primary</div></div>
+<div class="box radio-row" style="left:991.6px;top:563.1px;width:126.5px;height:19.8px;"><span class="radio-dot"></span><span class="lbl">○定額法(月割)</span><div class="annot">token:primary</div></div>
+<div class="box radio-row" style="left:854.6px;top:587.9px;width:126.5px;height:19.8px;"><span class="radio-dot"></span><span class="lbl">○定率法</span><div class="annot">token:primary</div></div>
+<div class="box radio-row" style="left:991.6px;top:587.9px;width:126.5px;height:19.8px;"><span class="radio-dot"></span><span class="lbl">○定率法(月割)</span><div class="annot">token:primary</div></div>
+<div class="box section" style="left:833.5px;top:622.5px;width:284.6px;height:54.5px;"><div class="section-title">明細区分</div></div>
+<div class="box radio-row" style="left:854.6px;top:637.4px;width:126.5px;height:19.8px;"><span class="radio-dot"></span><span class="lbl">●管種(金額有)</span><div class="annot">token:primary</div></div>
+<div class="box radio-row" style="left:991.6px;top:637.4px;width:126.5px;height:19.8px;"><span class="radio-dot"></span><span class="lbl">○構造</span><div class="annot">token:primary</div></div>
+<div class="box radio-row" style="left:854.6px;top:657.2px;width:126.5px;height:19.8px;"><span class="radio-dot"></span><span class="lbl">○管種(金額無)</span><div class="annot">token:primary</div></div>
+<div class="box radio-row" style="left:991.6px;top:657.2px;width:126.5px;height:19.8px;"><span class="radio-dot"></span><span class="lbl">○明細無</span><div class="annot">⟦Secondaryボタン(明細編集)⟧</div></div>
+<div class="box button" style="left:1139.2px;top:543.4px;width:189.7px;height:16.5px;"><span>耐用年数</span><div class="annot">⟦(新規)コード検索ボタン⟧</div></div>
+<div class="box field" style="left:1139.2px;top:561.7px;width:189.7px;height:16.5px;"><span>償却率　0.00</span><div class="annot">token:bg-readonly</div></div>
+<div class="box field" style="left:1139.2px;top:580.0px;width:189.7px;height:16.5px;"><span>残存率　0.00</span><div class="annot">token:bg-input</div></div>
+<div class="box field" style="left:1139.2px;top:598.3px;width:189.7px;height:16.5px;"><span>残存価額　0</span><div class="annot">token:bg-input</div></div>
+<div class="box field" style="left:1139.2px;top:616.6px;width:189.7px;height:16.5px;"><span>年間償却額　0</span><div class="annot">token:bg-input</div></div>
+<div class="box field" style="left:1139.2px;top:634.9px;width:189.7px;height:16.5px;"><span>限度率　0.00</span><div class="annot">token:bg-input</div></div>
+<div class="box field" style="left:1139.2px;top:653.2px;width:189.7px;height:16.5px;"><span>償却限度額　0</span><div class="annot">token:bg-input</div></div>
+<div class="box button" style="left:317.1px;top:688.0px;width:158.1px;height:38.5px;"><span>自由設定</span><div class="annot">⟦Secondaryボタン⟧</div></div>
+<div class="box button" style="left:485.7px;top:688.0px;width:158.1px;height:38.5px;"><span>財源設定</span><div class="annot">⟦Secondaryボタン⟧</div></div>
+<div class="box button" style="left:991.6px;top:688.0px;width:105.4px;height:38.5px;"><span>OK</span><div class="annot">⟦Mainボタン⟧  token:primary</div></div>
+<div class="box button" style="left:1107.6px;top:688.0px;width:105.4px;height:38.5px;"><span>クリア</span><div class="annot">⟦Secondaryボタン⟧</div></div>
+<div class="box button" style="left:1223.5px;top:688.0px;width:105.4px;height:38.5px;"><span>終了</span><div class="annot">⟦Tertiary §3.1.5(終了→キャンセルボタンへ改名)⟧</div></div>
+  <div class="footer">© funlead corp. / GYS wireframe</div>
+</div>
+</body>
+</html>
